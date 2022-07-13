@@ -10,7 +10,7 @@ import {
   getUserSessionsHandler,
   deleteSessionHandler,
 } from "./controller/session.controller";
-import { createUserHandler } from "./controller/user.controller";
+import { createUserHandler, getUserHandler, getUsersHandler } from "./controller/user.controller";
 import requireUser from "./middleware/requireUser";
 import validateResource from "./middleware/validateResource";
 import {
@@ -27,6 +27,9 @@ function routes(app: Express) {
   
 
   app.post("/api/users", validateResource(createUserSchema), createUserHandler);
+  app.get("/api/users", getUsersHandler);
+  app.get("/api/users/:id", getUserHandler);
+
 
   app.post("/api/sessions",validateResource(createSessionSchema),createUserSessionHandler);
 

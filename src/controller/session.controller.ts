@@ -29,9 +29,10 @@ export async function createUserSessionHandler(req: Request, res: Response) {
     { ...user, session: session._id }, { expiresIn: config.get("refreshTokenTtl") } // 15 minutes
   );
 
-  // return access & refresh tokens
+  // return access & refresh token
 
   return res.send({ accessToken, refreshToken });
+  console.log("User have been logged in")
 }
 
 export async function getUserSessionsHandler(req: Request, res: Response) {
@@ -51,4 +52,5 @@ export async function deleteSessionHandler(req: Request, res: Response) {
     accessToken: null,
     refreshToken: null,
   });
+  console.log("User have been signed out")
 }
