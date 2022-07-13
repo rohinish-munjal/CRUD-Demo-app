@@ -53,4 +53,5 @@ userSchema.methods.comparePassword = async function (
 const UserModel = mongoose.model<UserDocument>("User", userSchema);
 //By using UserDocument we have passed our own interface, giving type definitions like the custom properties on the Schema
 
-export default UserModel;
+const User = mongoose.model<UserDocument>("User", userSchema);
+export default User;
